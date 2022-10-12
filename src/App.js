@@ -3,6 +3,7 @@ import React from "react";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
+import NavbarComponent from './NavbarComponent';
 
 class App extends React.Component {
 
@@ -24,11 +25,14 @@ class App extends React.Component {
   changePage = newPage => {
     this.setState({page: newPage});
   }
-  
+
 
  render(){
   return (
     <div className="App">
+      <NavbarComponent />
+      <br></br>
+      <div className="Content">
       {
         this.state.page === "Login" ?
         <Login changePage={this.changePage} users={this.state.users}/>:
@@ -36,9 +40,10 @@ class App extends React.Component {
         <Register changePage={this.changePage} addUser={this.addUser} />:
         <Home changePage={this.changePage}/>
       }
+      </div>
     </div>
 
-    
+
   );
  }
 }

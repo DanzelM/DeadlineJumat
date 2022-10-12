@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import Home from "./Home";
 import Login from "./Login";
+import NavbarComponent from "./NavbarComponent";
 
 class Register extends React.Component {
 
@@ -13,7 +14,7 @@ class Register extends React.Component {
           errormessage:""
       };
     }
-  
+
    onRegister=() =>{
     if(this.state.newUser !== "" && this.state.newPassword !== ""){
         this.props.addUser({
@@ -24,9 +25,9 @@ class Register extends React.Component {
     else{
         alert("Type something");
     }
-    
+
    }
-  
+
   render(){
       return (
           <div>
@@ -58,7 +59,6 @@ class Register extends React.Component {
       );
   }
   }
-  
-  
+
+
   export default Register;
-  

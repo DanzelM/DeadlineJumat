@@ -3,6 +3,7 @@ import './App.css';
 import Home from "./Home";
 import Register from "./Register";
 import App from "./App";
+import NavbarComponent from "./NavbarComponent";
 
 class Login extends React.Component {
 
@@ -27,7 +28,7 @@ class Login extends React.Component {
    onRegister=() =>{
     this.props.changePage("Register");
    }
-  
+
    onLogin = () => {
     if(this.props.users.find(user => (user.username === this.state.username && user.password === this.state.password)))
     {this.props.changePage("Home");
@@ -65,6 +66,6 @@ class Login extends React.Component {
         );
   }
   }
-  
-  
+
+
   export default Login;
