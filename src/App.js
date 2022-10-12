@@ -1,25 +1,46 @@
-import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import Home from "./Home";
+import Login from "./Login";
+import Register from "./Register";
 
-function App() {
+class App extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+     page: "Login",
+     users: [
+      {username:"kevin", password:"kevin"},
+      {    }
+      ],
+    };
+  }
+
+  addUser = user => {
+    this.setState({users: this.state.users.concat(user)})
+  }
+
+  changePage = newPage => {
+    this.setState({page: newPage});
+  }
+  
+
+ render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        this.state.page === "Login" ?
+        <Login changePage={this.changePage} users={this.state.users}/>:
+        this.state.page === "Register"?
+        <Register changePage={this.changePage} addUser={this.addUser} />:
+        <Home changePage={this.changePage}/>
+      }
     </div>
+
+    
   );
+ }
 }
 
 export default App;
