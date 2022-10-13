@@ -3,7 +3,6 @@ import React from "react";
 import Home from "./Home";
 import Login from "./Login";
 import Register from "./Register";
-import NavbarComponent from './NavbarComponent';
 
 class App extends React.Component {
 
@@ -33,8 +32,6 @@ class App extends React.Component {
  render(){
   return (
     <div className="App">
-      <NavbarComponent/> 
-      <br></br>
       <div className="Content">
       {
         this.state.page === "Login" ?

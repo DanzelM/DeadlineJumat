@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React,{useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css"
 import NavbarComponent from './NavbarComponent';
 import axios from 'axios';
@@ -9,46 +9,59 @@ constructor(props){
   super(props);
 
   this.state = {
-    product: "",
+    findproduct: [],
+    product:[],
     products: [],
+    item:""
   }
 }
 
+/* filterBarang(){
+const [filter,setFilter] = useState('');
+}
+ */
 componentDidMount(){
   axios.get("https://online.akomate.com/atma/api/products").then(res =>{
       this.setState({
-        products: res.data
+        products: res.data,
       })
   }) 
 }
+
+/* 
+findItem (){
+  this.setState({findproduct: products.filter((x) => {
+  return x.name === this.state.findproduct})
+})}
+*/
 
 
 render() {
   return (
     <div className="Home">
+      <NavbarComponent />
       <br></br>
       <div className="Content">
-        <input id="product" value={this.state.product} 
+        <input id="product" placeholder="Search" value={this.state.item} 
           onChange={element => this.setState({
-          product:element.target.value, products:[]})}/>
-        <button type="button" onClick={() => {
-          axios.get("https://online.akomate.com/atma/api/products").then(res =>{
-          this.setState({
-            })
-          })
-        }}>Search</button><br></br>
+          item:element.target.value})}/>
         <h1>Our Products</h1>
-        <ul>{this.state.products.map((product) => {
-            return <ul>
-              <img src={product.image}></img>
-              <h2>{product.name}</h2>
-              <p>{product.detail}</p>
-              <p>Price : IDR {product.price}</p>
-            </ul>
-        })
-        
-        }
-        </ul>
+          
+          <ul>
+            {
+            this.state.products.filter((findproduct =>
+            findproduct.name.toLowerCase().includes(this.state.item.toLowerCase())
+              )).map((product) => {
+              return <ul>
+                <img src={product.image}></img>
+                <h2>{product.name}</h2>
+                <p>{product.detail}</p>
+                <p>Price : IDR {product.price}</p>
+              </ul>
+              })
+            }
+            
+          </ul>
       
       
       </div>
