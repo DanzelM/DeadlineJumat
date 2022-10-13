@@ -15,8 +15,8 @@ class NavbarComponent extends React.Component {
                     <Navbar.Collapse id="basic-navbar-nav">
                         <Nav className="navbarref">
                             <Nav.Link style={{"color":"white"}}href="#">Home</Nav.Link>
-                            <Nav.Link style={{"color":"white"}}href="#">Login</Nav.Link>
-                            <Nav.Link style={{"color":"white"}}href="#">Register</Nav.Link>
+                            <Nav.Link style={{"color":"white"}}href="#">Cart</Nav.Link>
+                            <Nav.Link style={{"color":"white"}}href="./Login">Logout</Nav.Link>
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

@@ -26,11 +26,14 @@ class App extends React.Component {
     this.setState({page: newPage});
   }
 
+  onLogout = () => {
+    this.props.changePage("Login");
+  }
 
  render(){
   return (
     <div className="App">
-      <NavbarComponent />
+      <NavbarComponent/> 
       <br></br>
       <div className="Content">
       {
